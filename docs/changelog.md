@@ -5,7 +5,7 @@
 ## Changelog
 
 
-### v0.1.0 
+### v0.1.1 Alpha release
 
 Based on PyWriter v9.0.5
 

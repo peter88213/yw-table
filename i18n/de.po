@@ -1,11 +1,11 @@
-# novelyst_matrix Dictionary (English-German)
+# yw-table Dictionary (English-German)
 # Copyright (C) 2022 Peter Triesberger
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1.0\n"
-"POT-Creation-Date: 2022-12-15 15:05:13\n"
-"PO-Revision-Date: 2022-12-15 15:05:14\n"
+"Project-Id-Version: 0.1.1\n"
+"POT-Creation-Date: 2022-12-15 16:33:21\n"
+"PO-Revision-Date: 2022-12-15 16:33:22\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"

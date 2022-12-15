@@ -1,8 +1,9 @@
 """A relationship table for yw7 files
 
+Version @release
 Requires Python 3.6+
 Copyright (c) 2022 Peter Triesberger
-For further information see https://github.com/peter88213/novelyst_matrix
+For further information see https://github.com/peter88213/yw-table
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import sys
@@ -21,12 +22,12 @@ class TableManager(MainTk):
 
     def __init__(self):
         kwargs = {
-                'root_geometry': '',
+                'root_geometry': '800x600',
                 'yw_last_open': '',
                 'color_text_bg':'white',
                 'color_text_fg':'black',
                 }
-        super().__init__(APPLICATION, **kwargs)
+        super().__init__(f'{APPLICATION}  @release', **kwargs)
         # self.root.state('zoom')
         # self.mainWindow.pack_propagate(0)
 
