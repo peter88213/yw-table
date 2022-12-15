@@ -9,6 +9,7 @@ Published under the MIT License (https://opensource.org/licenses/mit-license.php
 """
 import sys
 import os
+import platform
 import stat
 from shutil import copytree
 from shutil import copyfile
@@ -34,9 +35,9 @@ except:
     def _(message):
         return message
 
-APPNAME = 'yw-table'
+APPNAME = 'yw_table'
 VERSION = ' @release'
-APP = f'{APPNAME}.pyw'
+APP = f'{APPNAME}.py'
 INI_FILE = f'{APPNAME}.ini'
 INI_PATH = '/config/'
 SAMPLE_PATH = 'sample/'
@@ -49,10 +50,15 @@ SHORTCUT_MESSAGE = '''
 Now you might want to create a shortcut on your desktop.  
 
 On Windows, open the installation folder, hold down the Alt key on your keyboard, 
-and then drag and drop $Appname.pyw to your desktop.
+and then drag and drop "run.pyw" to your desktop.
 
 On Linux, create a launcher on your desktop. With xfce for instance, the launcher's command may look like this:
-python3 '$Apppath' %F
+python3 '$Apppath' %f
+'''
+
+START_UP_SCRIPT = 'run.pyw'
+START_UP_CODE = f'''import {APPNAME}
+{APPNAME}.main()
 '''
 
 root = Tk()
@@ -94,19 +100,10 @@ def install(pywriterPath):
         simpleUpdate = True
     else:
         simpleUpdate = False
-    try:
-        # Move an existing installation to the new place, if necessary.
-        oldHome = os.getenv('APPDATA').replace('\\', '/')
-        oldInstDir = f'{oldHome}/pyWriter/{APPNAME}'
-        os.replace(oldInstDir, installDir)
-        output(f'Moving "{oldInstDir}" to "{installDir}"')
-    except:
-        pass
     os.makedirs(cnfDir, exist_ok=True)
 
     # Delete the old version, but retain configuration, if any.
     rmtree(f'{installDir}/locale', ignore_errors=True)
-    rmtree(f'{installDir}/icons', ignore_errors=True)
     with os.scandir(installDir) as files:
         for file in files:
             if not 'config' in file.name:
@@ -119,10 +116,6 @@ def install(pywriterPath):
     # Install the localization files.
     copytree('locale', f'{installDir}/locale')
     output(f'Copying "locale"')
-
-    # Install the icon files.
-    copytree('icons', f'{installDir}/icons', dirs_exist_ok=True)
-    output(f'Copying "icons"')
 
     # Make the script executable under Linux.
     try:
@@ -150,6 +143,14 @@ def install(pywriterPath):
     # Ask for shortcut creation.
     if not simpleUpdate:
         output(Template(SHORTCUT_MESSAGE).safe_substitute(mapping))
+
+    #--- Create a start-up script.
+    if platform.system() == 'Windows':
+        shebang = ''
+    else:
+        shebang = '#!/usr/bin/python3\n'
+    with open(f'{installDir}/{START_UP_SCRIPT}', 'w', encoding='utf-8') as f:
+        f.write(f'{shebang}{START_UP_CODE}')
 
 
 if __name__ == '__main__':

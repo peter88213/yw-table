@@ -19,7 +19,7 @@
 
 [Download the latest release (version 0.99.0)](https://github.com/peter88213/yw-table/raw/main/dist/yw-table_v0.99.0.zip)
 
-- Unzip the downloaded zipfile "yw-table_v0.99.0.zip" into a new folder.
+- Unzip the downloaded zipfile "yw_table_v0.99.0.zip" into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the plugin for the local user.
 - Open "README.md" for usage instructions.
 
@@ -37,6 +37,6 @@ See the [instructions for use](usage)
 
 ## License
 
-This is Open Source software, and the *yw-table* program is licenced under GPLv3. See the
+This is Open Source software, and the *yw_table* program is licenced under GPLv3. See the
 [GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
 details, or consult the [LICENSE](https://github.com/peter88213/yw-table/blob/main/LICENSE) file.

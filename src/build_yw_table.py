@@ -14,7 +14,7 @@ import inliner
 SRC = '../src/'
 BUILD = '../test/'
 SOURCE_FILE = f'{SRC}yw_table_.py'
-TARGET_FILE = f'{BUILD}yw-table.pyw'
+TARGET_FILE = f'{BUILD}yw_table.py'
 
 
 def main():

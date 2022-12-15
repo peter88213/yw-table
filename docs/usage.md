@@ -6,8 +6,6 @@ A scene relationship table for yWriter projects.
 
 ## Instructions for use
 
-You might want to have a look at the [tutorial](https://peter88213.github.io/aeon2yw/tutorial)
-
 ### Intended usage
 
 The included installation script prompts you to create a shortcut on the desktop. 
@@ -22,13 +20,15 @@ Alternatively, you can
 - launch the program on the command line passing the *.yw7* file as an argument, or
 - launch the program via a batch file.
 
-usage: `yw-table.pyw Sourcefile`
+usage: `yw_table.py Sourcefile`
 
 #### positional arguments:
 
 `Sourcefile` 
 
 The path of the *.yw7* file.
+
+### Operation
 
 #### Open a project
 
