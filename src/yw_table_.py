@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """A relationship table for yw7 files
 
 Version @release
