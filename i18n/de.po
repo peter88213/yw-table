@@ -1,0 +1,69 @@
+# novelyst_matrix Dictionary (English-German)
+# Copyright (C) 2022 Peter Triesberger
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1.0\n"
+"POT-Creation-Date: 2022-12-15 15:05:13\n"
+"PO-Revision-Date: 2022-12-15 15:05:14\n"
+"Last-Translator: Peter Triesberger\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+msgid "Apply changes"
+msgstr "Änderungen übernehmen"
+
+msgid "Arcs"
+msgstr "Bögen"
+
+msgid "Can not process file"
+msgstr "Kann Datei nicht verarbeiten"
+
+msgid "Cannot overwrite file"
+msgstr "Kann Datei nicht überwchreiben"
+
+msgid "Cannot write file"
+msgstr "Kann Datei nicht schreiben"
+
+msgid "Characters"
+msgstr "Figuren"
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Exit"
+msgstr "Beenden"
+
+msgid "File"
+msgstr "Datei"
+
+msgid "Items"
+msgstr "Gegenstände"
+
+msgid "Locations"
+msgstr "Schauplätze"
+
+msgid "Open..."
+msgstr "Öffnen"
+
+msgid "Scenes"
+msgstr "Szenen"
+
+msgid "Unknown author"
+msgstr "Unbekannter Autor"
+
+msgid "Untitled project"
+msgstr "Projekt ohne Titel"
+
+msgid "by"
+msgstr "von"
+
+msgid "yWriter 7 project"
+msgstr "yWriter 7-Projekt"
+
+msgid "yWriter seems to be open. Please close first"
+msgstr "yWriter schein offen zu sein. Bitte zuerst schließen"
+

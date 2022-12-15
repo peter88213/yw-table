@@ -1,0 +1,5 @@
+/build/
+/test/yw7/
+/test/yw-table.pyw
+*.pyc
+*.bak
