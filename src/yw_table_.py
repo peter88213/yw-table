@@ -34,12 +34,18 @@ class TableManager(MainTk):
 
     def open_project(self, fileName):
         super().open_project(fileName)
+
         #--- The Relationship Table.
         Node.isModified = False
         if self.novel is not None:
+            # Set up a window with scrollbars.
             self._tableWindow = ScrolledWindow(self.mainWindow)
-            self._relationsTable = RelationsTable(self._tableWindow.display, self.novel)
             self._tableWindow.pack(fill=tk.BOTH, expand=True)
+
+            # Build the table structure.
+            self._relationsTable = RelationsTable(self._tableWindow.display, self.novel)
+
+            # Set table data.
             self._relationsTable.set_nodes()
 
     def close_project(self, event=None):

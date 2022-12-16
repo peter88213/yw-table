@@ -36,15 +36,6 @@ class RelationsTable:
         colorsLocation = (('coral1', 'coral3'), ('coral3', 'coral4'))
         colorsItem = (('aquamarine1', 'aquamarine3'), ('aquamarine3', 'aquamarine4'))
 
-        matrixWindow = tk.PanedWindow(master,
-                                      orient=tk.HORIZONTAL,
-                                      sashwidth=4,
-                                      sashrelief=tk.GROOVE,
-                                      handlesize=10,
-                                      handlepad=5,
-                                      showhandle=True)
-        matrixWindow.pack(anchor='w', fill=tk.BOTH)
-
         row = 0
         bgr = row % 2
         col = 0
@@ -56,9 +47,9 @@ class RelationsTable:
         self._itemNodes = {}
 
         #--- Scene title column.
-        columns.append(tk.Frame(matrixWindow))
+        columns.append(tk.Frame(master))
         columns[col].pack()
-        matrixWindow.add(columns[col], stretch='never')
+        columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
         tk.Label(columns[col], text=_('Scenes'), bg=colorsBackground[1][1]).pack(fill=tk.X)
         tk.Label(columns[col], text=' ', bg=colorsBackground[bgr][bgc]).pack(fill=tk.X)
 
@@ -96,9 +87,8 @@ class RelationsTable:
             else:
                 self._scnArcs[scId] = []
         if self._arcs:
-            arcWindow = tk.Frame(matrixWindow)
-            arcWindow.pack()
-            matrixWindow.add(arcWindow, stretch='middle')
+            arcWindow = tk.Frame(master)
+            arcWindow.pack(side=tk.LEFT, fill=tk.BOTH)
             tk.Label(arcWindow, text=_('Arcs'), bg=colorsArc[0][0]).pack(fill=tk.X)
             for arc in self._arcs:
                 row = 0
@@ -106,7 +96,7 @@ class RelationsTable:
                 col += 1
                 bgc = col % 2
                 columns.append(tk.Frame(arcWindow))
-                columns[col].pack(side=tk.LEFT)
+                columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
                 tk.Label(columns[col],
                          text=arc,
                          bg=colorsBackground[bgr][bgc],
@@ -125,9 +115,8 @@ class RelationsTable:
 
         #--- Character columns.
         if novel.characters:
-            characterWindow = tk.Frame(matrixWindow)
-            characterWindow.pack()
-            matrixWindow.add(characterWindow, stretch='middle')
+            characterWindow = tk.Frame(master)
+            characterWindow.pack(side=tk.LEFT, fill=tk.BOTH)
             tk.Label(characterWindow, text=_('Characters'), bg=colorsCharacter[0][0]).pack(fill=tk.X)
             for crId in novel.characters:
                 row = 0
@@ -135,7 +124,7 @@ class RelationsTable:
                 col += 1
                 bgc = col % 2
                 columns.append(tk.Frame(characterWindow))
-                columns[col].pack(side=tk.LEFT)
+                columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
                 tk.Label(columns[col],
                          text=novel.characters[crId].title,
                          bg=colorsBackground[bgr][bgc],
@@ -154,9 +143,8 @@ class RelationsTable:
 
         #--- Location columns.
         if novel.locations:
-            locationWindow = tk.Frame(matrixWindow)
-            locationWindow.pack()
-            matrixWindow.add(locationWindow, stretch='middle')
+            locationWindow = tk.Frame(master)
+            locationWindow.pack(side=tk.LEFT, fill=tk.BOTH)
             tk.Label(locationWindow, text=_('Locations'), bg=colorsLocation[0][0]).pack(fill=tk.X)
             for lcId in novel.locations:
                 row = 0
@@ -164,7 +152,7 @@ class RelationsTable:
                 col += 1
                 bgc = col % 2
                 columns.append(tk.Frame(locationWindow))
-                columns[col].pack(side=tk.LEFT)
+                columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
                 tk.Label(columns[col],
                          text=novel.locations[lcId].title,
                          bg=colorsBackground[bgr][bgc],
@@ -183,9 +171,8 @@ class RelationsTable:
 
         #--- Item columns.
         if novel.items:
-            itemWindow = tk.Frame(matrixWindow)
-            itemWindow.pack()
-            matrixWindow.add(itemWindow, stretch='middle')
+            itemWindow = tk.Frame(master)
+            itemWindow.pack(side=tk.LEFT, fill=tk.BOTH)
             tk.Label(itemWindow, text=_('Items'), bg=colorsItem[0][0]).pack(fill=tk.X)
             for itId in novel.items:
                 row = 0
@@ -193,7 +180,7 @@ class RelationsTable:
                 col += 1
                 bgc = col % 2
                 columns.append(tk.Frame(itemWindow))
-                columns[col].pack(side=tk.LEFT)
+                columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
                 tk.Label(columns[col],
                          text=novel.items[itId].title,
                          bg=colorsBackground[bgr][bgc],
@@ -209,10 +196,6 @@ class RelationsTable:
                          )
                     node.pack(fill=tk.X)
                     self._itemNodes[scId][itId] = node
-
-        # Terminating frame
-        rightLimit = tk.Frame(matrixWindow, width=1)
-        matrixWindow.add(rightLimit, stretch='never')
 
     def set_nodes(self):
         """Loop through all nodes, setting states."""

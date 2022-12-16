@@ -20,14 +20,18 @@ class ScrolledWindow(ttk.Frame):
     def __init__(self, parent, *args, **kw):
         ttk.Frame.__init__(self, parent, *args, **kw)
 
-        # Create a _canvas object and a vertical scrollbar for scrolling it.
+        # Create a _canvas object and scrollbars for scrolling it.
         vscrollbar = ttk.Scrollbar(self, orient=tk.VERTICAL)
         vscrollbar.pack(fill=tk.Y, side=tk.RIGHT, expand=tk.FALSE)
+
         hscrollbar = ttk.Scrollbar(self, orient=tk.HORIZONTAL)
         hscrollbar.pack(fill=tk.X, side=tk.BOTTOM, expand=tk.FALSE)
+
         self._canvas = tk.Canvas(self, bd=0, highlightthickness=0,
-                           yscrollcommand=vscrollbar.set)
+                                 xscrollcommand=hscrollbar.set,
+                                 yscrollcommand=vscrollbar.set)
         self._canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=tk.TRUE)
+
         vscrollbar.config(command=self._canvas.yview)
         hscrollbar.config(command=self._canvas.xview)
 
@@ -50,11 +54,4 @@ class ScrolledWindow(ttk.Frame):
                 self._canvas.config(width=self.display.winfo_reqwidth())
 
         self.display.bind('<Configure>', _configure_display)
-
-        def _configure_canvas(event):
-            if self.display.winfo_reqwidth() != self._canvas.winfo_width():
-                # Update the inner frame's width to fill the _canvas.
-                self._canvas.itemconfigure(self._display_id, width=self._canvas.winfo_width())
-
-        self._canvas.bind('<Configure>', _configure_canvas)
 
