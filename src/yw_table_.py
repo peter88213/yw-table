@@ -63,7 +63,10 @@ class TableManager(MainTk):
         if Node.isModified:
             if messagebox.askyesno(APPLICATION, f"{_('Apply changes')}?"):
                 self._relationsTable.get_nodes()
-                self.prjFile.write()
+                try:
+                    self.prjFile.write()
+                except Error as ex:
+                    self.set_info_how(f'!{str(ex)}')
             Node.isModified = False
 
 

@@ -107,8 +107,12 @@ def install(pywriterPath):
     with os.scandir(installDir) as files:
         for file in files:
             if not 'config' in file.name:
-                os.remove(file)
-                output(f'Removing "{file.name}"')
+                try:
+                    os.remove(file)
+                    output(f'Removing "{file.name}"')
+                except:
+                    pass
+
     # Install the new version.
     copyfile(APP, f'{installDir}/{APP}')
     output(f'Copying "{APP}"')

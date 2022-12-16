@@ -5,6 +5,15 @@
 ## Changelog
 
 
+### v0.3.0 Alpha release
+
+- Remove the panes that made the columns resizeable.
+  This is needed for horizontal scrolling.
+- Handle write errors.
+
+Based on PyWriter v9.0.5
+
+
 ### v0.2.0 Alpha release
 
 - Rename "yw-table.pyw" --> "yw_table.py".
