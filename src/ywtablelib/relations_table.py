@@ -30,16 +30,11 @@ class RelationsTable:
             
         """
         self._novel = novel
-        colorsBackground = (('white', 'gray95'), ('gray85', 'gray80'))
-        colorsArc = (('royalBlue1', 'royalBlue3'), ('royalBlue3', 'royalBlue4'))
-        colorsCharacter = (('goldenrod1', 'goldenrod3'), ('goldenrod3', 'goldenrod4'))
-        colorsLocation = (('coral1', 'coral3'), ('coral3', 'coral4'))
-        colorsItem = (('aquamarine1', 'aquamarine3'), ('aquamarine3', 'aquamarine4'))
 
-        row = 0
+        row = 1
         bgr = row % 2
         col = 0
-        bgc = col % 2
+        bgc = (col + 1) % 2
         columns = []
         self._arcNodes = {}
         self._characterNodes = {}
@@ -47,10 +42,10 @@ class RelationsTable:
         self._itemNodes = {}
 
         #--- Scene title column.
-        columns.append(tk.Frame(master))
+        columns.append(tk.Frame(master.display))
         columns[col].pack()
         columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
-        tk.Label(columns[col], text=_('Scenes'), bg=colorsBackground[1][1]).pack(fill=tk.X)
+        tk.Label(columns[col], text=_('Scenes')).pack(fill=tk.X)
         tk.Label(columns[col], text=' ', bg=colorsBackground[bgr][bgc]).pack(fill=tk.X)
 
         #--- Loop through scenes and select the "normal" ones.
@@ -87,14 +82,14 @@ class RelationsTable:
             else:
                 self._scnArcs[scId] = []
         if self._arcs:
-            arcWindow = tk.Frame(master)
+            arcWindow = tk.Frame(master.display)
             arcWindow.pack(side=tk.LEFT, fill=tk.BOTH)
             tk.Label(arcWindow, text=_('Arcs'), bg=colorsArc[0][0]).pack(fill=tk.X)
             for arc in self._arcs:
-                row = 0
+                row = 1
                 bgr = row % 2
                 col += 1
-                bgc = col % 2
+                bgc = (col + 1) % 2
                 columns.append(tk.Frame(arcWindow))
                 columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
                 tk.Label(columns[col],
@@ -115,14 +110,14 @@ class RelationsTable:
 
         #--- Character columns.
         if novel.characters:
-            characterWindow = tk.Frame(master)
+            characterWindow = tk.Frame(master.display)
             characterWindow.pack(side=tk.LEFT, fill=tk.BOTH)
             tk.Label(characterWindow, text=_('Characters'), bg=colorsCharacter[0][0]).pack(fill=tk.X)
             for crId in novel.characters:
-                row = 0
+                row = 1
                 bgr = row % 2
                 col += 1
-                bgc = col % 2
+                bgc = (col + 1) % 2
                 columns.append(tk.Frame(characterWindow))
                 columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
                 tk.Label(columns[col],
@@ -143,14 +138,14 @@ class RelationsTable:
 
         #--- Location columns.
         if novel.locations:
-            locationWindow = tk.Frame(master)
+            locationWindow = tk.Frame(master.display)
             locationWindow.pack(side=tk.LEFT, fill=tk.BOTH)
             tk.Label(locationWindow, text=_('Locations'), bg=colorsLocation[0][0]).pack(fill=tk.X)
             for lcId in novel.locations:
-                row = 0
+                row = 1
                 bgr = row % 2
                 col += 1
-                bgc = col % 2
+                bgc = (col + 1) % 2
                 columns.append(tk.Frame(locationWindow))
                 columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
                 tk.Label(columns[col],
@@ -171,14 +166,14 @@ class RelationsTable:
 
         #--- Item columns.
         if novel.items:
-            itemWindow = tk.Frame(master)
+            itemWindow = tk.Frame(master.display)
             itemWindow.pack(side=tk.LEFT, fill=tk.BOTH)
             tk.Label(itemWindow, text=_('Items'), bg=colorsItem[0][0]).pack(fill=tk.X)
             for itId in novel.items:
-                row = 0
+                row = 1
                 bgr = row % 2
                 col += 1
-                bgc = col % 2
+                bgc = (col + 1) % 2
                 columns.append(tk.Frame(itemWindow))
                 columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
                 tk.Label(columns[col],
@@ -273,54 +268,4 @@ class RelationsTable:
                 else:
                     if node.state:
                         self._novel.scenes[scId].items.append(itId)
-
-
-def string_to_list(text, divider=';'):
-    """Convert a string into a list with unique elements.
-    
-    Positional arguments:
-        text -- string containing divider-separated substrings.
-        
-    Optional arguments:
-        divider -- string that divides the substrings.
-    
-    Split a string into a list of strings. Retain the order, but discard duplicates.
-    Remove leading and trailing spaces, if any.
-    Return a list of strings.
-    If an error occurs, return an empty list.
-    """
-    elements = []
-    try:
-        tempList = text.split(divider)
-        for element in tempList:
-            element = element.strip()
-            if element and not element in elements:
-                elements.append(element)
-        return elements
-
-    except:
-        return []
-
-
-def list_to_string(elements, divider=';'):
-    """Join strings from a list.
-    
-    Positional arguments:
-        elements -- list of elements to be concatenated.
-        
-    Optional arguments:
-        divider -- string that divides the substrings.
-    
-    Return a string which is the concatenation of the 
-    members of the list of strings "elements", separated by 
-    a comma plus a space. The space allows word wrap in 
-    spreadsheet cells.
-    If an error occurs, return an empty string.
-    """
-    try:
-        text = divider.join(elements)
-        return text
-
-    except:
-        return ''
 

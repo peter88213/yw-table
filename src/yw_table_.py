@@ -43,7 +43,7 @@ class TableManager(MainTk):
             self._tableWindow.pack(fill=tk.BOTH, expand=True)
 
             # Build the table structure.
-            self._relationsTable = RelationsTable(self._tableWindow.display, self.novel)
+            self._relationsTable = RelationsTable(self._tableWindow, self.novel)
 
             # Set table data.
             self._relationsTable.set_nodes()

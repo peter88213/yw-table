@@ -14,6 +14,13 @@ __all__ = ['Error',
            'norm_path',
            'LOCALE_PATH',
            'CURRENT_LANGUAGE',
+           'colorsBackground',
+           'colorsArc',
+           'colorsCharacter',
+           'colorsLocation',
+           'colorsItem',
+           'string_to_list',
+           'list_to_string',
            ]
 
 
@@ -37,4 +44,61 @@ def norm_path(path):
     if path is None:
         path = ''
     return os.path.normpath(path)
+
+
+colorsBackground = (('gray80', 'gray85'), ('gray95', 'white'))
+colorsArc = (('royalBlue1', 'royalBlue3'), ('royalBlue3', 'royalBlue4'))
+colorsCharacter = (('goldenrod1', 'goldenrod3'), ('goldenrod3', 'goldenrod4'))
+colorsLocation = (('coral1', 'coral3'), ('coral3', 'coral4'))
+colorsItem = (('aquamarine1', 'aquamarine3'), ('aquamarine3', 'aquamarine4'))
+
+
+def string_to_list(text, divider=';'):
+    """Convert a string into a list with unique elements.
+    
+    Positional arguments:
+        text -- string containing divider-separated substrings.
+        
+    Optional arguments:
+        divider -- string that divides the substrings.
+    
+    Split a string into a list of strings. Retain the order, but discard duplicates.
+    Remove leading and trailing spaces, if any.
+    Return a list of strings.
+    If an error occurs, return an empty list.
+    """
+    elements = []
+    try:
+        tempList = text.split(divider)
+        for element in tempList:
+            element = element.strip()
+            if element and not element in elements:
+                elements.append(element)
+        return elements
+
+    except:
+        return []
+
+
+def list_to_string(elements, divider=';'):
+    """Join strings from a list.
+    
+    Positional arguments:
+        elements -- list of elements to be concatenated.
+        
+    Optional arguments:
+        divider -- string that divides the substrings.
+    
+    Return a string which is the concatenation of the 
+    members of the list of strings "elements", separated by 
+    a comma plus a space. The space allows word wrap in 
+    spreadsheet cells.
+    If an error occurs, return an empty string.
+    """
+    try:
+        text = divider.join(elements)
+        return text
+
+    except:
+        return ''
 
