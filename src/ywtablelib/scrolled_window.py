@@ -40,18 +40,26 @@ class ScrolledWindow(ttk.Frame):
         self._canvas.yview_moveto(0)
 
         # Create a frame inside the _canvas which will be scrolled with it.
-        self.display = ttk.Frame(self._canvas)
-        self._display_id = self._canvas.create_window(0, 0, window=self.display, anchor=tk.NW, tags="self.display")
-        # Track changes to the _canvas and frame width and sync them,
-        # also updating the scrollbar.
+        self.scrollable = ttk.Frame(self._canvas)
+        self._canvas.create_window(0, 0, window=self.scrollable, anchor=tk.NW, tags="self.display")
 
-        def _configure_display(event):
+        # Table frames inside the scrollable area.
+        self.rowTitles = ttk.Frame(self.scrollable)
+        self.rowTitles.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.topLeft = ttk.Frame(self.rowTitles)
+        self.topLeft.pack(fill=tk.X, expand=False)
+        self.display = ttk.Frame(self.scrollable)
+        self.display.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.columnTitles = ttk.Frame(self.display)
+        self.columnTitles.pack(fill=tk.X, expand=True)
+
+        def _configure_scrollable(event):
             # Update the scrollbars to match the size of the inner frame.
-            size = (self.display.winfo_reqwidth(), self.display.winfo_reqheight())
+            size = (self.scrollable.winfo_reqwidth(), self.scrollable.winfo_reqheight())
             self._canvas.config(scrollregion="0 0 %s %s" % size)
-            if self.display.winfo_reqwidth() != self._canvas.winfo_width():
+            if self.scrollable.winfo_reqwidth() != self._canvas.winfo_width():
                 # Update the _canvas's width to fit the inner frame.
-                self._canvas.config(width=self.display.winfo_reqwidth())
+                self._canvas.config(width=self.scrollable.winfo_reqwidth())
 
-        self.display.bind('<Configure>', _configure_display)
+        self.scrollable.bind('<Configure>', _configure_scrollable)
 

@@ -5,6 +5,13 @@
 ## Changelog
 
 
+### v0.3.1 Alpha release
+
+- Add element types to the table bottom.
+- Refactor the code for smooth integration of the new scrollable windows currently being developped.
+
+Based on PyWriter v9.0.5
+
 ### v0.3.0 Alpha release
 
 - Remove the panes that made the columns resizeable.
@@ -12,7 +19,6 @@
 - Handle write errors.
 
 Based on PyWriter v9.0.5
-
 
 ### v0.2.0 Alpha release
 
