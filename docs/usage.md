@@ -57,7 +57,7 @@ The path of the *.yw7* file.
 
 #### Exit 
 
-- You can exit with **File > Exit** of **Ctrl-Q**.
+- You can exit with **File > Exit** or **Ctrl-Q**.
 - When exiting the program, you will be asked for saving the project, if it has changed.
 
 
