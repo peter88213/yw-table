@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.5.1 Alpha release
+
+- Adjust colors.
+
+Based on PyWriter v9.0.5
+
 ### v0.5.0 Alpha release
 
 - Replace scrollbars by mouse wheel operation.

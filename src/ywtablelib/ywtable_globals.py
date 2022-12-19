@@ -47,10 +47,10 @@ def norm_path(path):
 
 
 colorsBackground = (('gray80', 'gray85'), ('gray95', 'white'))
-colorsArc = (('royalBlue1', 'royalBlue3'), ('royalBlue3', 'royalBlue4'))
-colorsCharacter = (('goldenrod1', 'goldenrod3'), ('goldenrod3', 'goldenrod4'))
-colorsLocation = (('coral1', 'coral3'), ('coral3', 'coral4'))
-colorsItem = (('aquamarine1', 'aquamarine3'), ('aquamarine3', 'aquamarine4'))
+colorsArc = (('royalBlue4', 'royalBlue3'), ('royalBlue3', 'royalBlue1'))
+colorsCharacter = (('goldenrod4', 'goldenrod3'), ('goldenrod3', 'goldenrod1'))
+colorsLocation = (('coral4', 'coral3'), ('coral3', 'coral1'))
+colorsItem = (('aquamarine4', 'aquamarine3'), ('aquamarine3', 'aquamarine1'))
 
 
 def string_to_list(text, divider=';'):
