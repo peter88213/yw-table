@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.4.0 Alpha release
+
+- Add mouse wheel support.
+
+Based on PyWriter v9.0.5
+
 ### v0.3.1 Alpha release
 
 - Add element types to the table bottom.
