@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.4.0\n"
-"POT-Creation-Date: 2022-12-19 10:13:12\n"
-"PO-Revision-Date: 2022-12-19 10:13:12\n"
+"Project-Id-Version: 0.5.0\n"
+"POT-Creation-Date: 2022-12-19 12:50:42\n"
+"PO-Revision-Date: 2022-12-19 12:50:43\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -57,6 +57,9 @@ msgstr "Unbekannter Autor"
 
 msgid "Untitled project"
 msgstr "Projekt ohne Titel"
+
+msgid "Use the mouse wheel for vertical scrolling, and <Shift>-mouse wheel for horizontal scrolling."
+msgstr "Scrollen: Senkrecht mit dem Mausrad, und waagerecht mit <Shift>-Mausrad."
 
 msgid "by"
 msgstr "von"

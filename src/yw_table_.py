@@ -29,8 +29,8 @@ class TableManager(MainTk):
                 'color_text_fg':'black',
                 }
         super().__init__(f'{APPLICATION}  @release', **kwargs)
+        self.show_status(_('Use the mouse wheel for vertical scrolling, and <Shift>-mouse wheel for horizontal scrolling.'))
         # self.root.state('zoom')
-        # self.mainWindow.pack_propagate(0)
 
     def open_project(self, fileName):
         super().open_project(fileName)

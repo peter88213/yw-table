@@ -30,6 +30,11 @@ The path of the *.yw7* file.
 
 ### Operation
 
+#### Scrolling
+
+Use the mouse wheel for vertical scrolling, and <Shift>-mouse wheel for horizontal scrolling.    
+
+
 #### Open a project
 
 - If no project is specified by dragging and dropping on the program icon,
