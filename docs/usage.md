@@ -32,8 +32,12 @@ The path of the *.yw7* file.
 
 #### Scrolling
 
-Use the mouse wheel for vertical scrolling, and <Shift>-mouse wheel for horizontal scrolling.    
+- Use the mouse wheel for vertical scrolling.
+- Use the mouse wheel with the `Shift` key pressed for horizontal scrolling.    
 
+#### Add/remove relationships
+
+- Add/Remove relationships by klicking on the nodes with the `Alt` key pressed.
 
 #### Open a project
 

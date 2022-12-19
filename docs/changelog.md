@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.6.0 Alpha release
+
+- Toggle with <Alt>-Mouseclick.
+
+Based on PyWriter v9.0.5
+
 ### v0.5.1 Alpha release
 
 - Adjust colors.
