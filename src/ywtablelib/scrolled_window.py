@@ -133,10 +133,10 @@ class ScrolledWindow(ttk.Frame):
             self._displayCanvas.bind_all("<Button-5>", self.on_mouse_wheel)
 
             # Horizontal scrolling
-            self._rowTitlesCanvas.bind_all("<Shift-Button-4>", self.on_mouse_wheel)
-            self._rowTitlesCanvas.bind_all("<Shift-Button-5>", self.on_mouse_wheel)
-            self._displayCanvas.bind_all("<Shift-Button-4>", self.on_mouse_wheel)
-            self._displayCanvas.bind_all("<Shift-Button-5>", self.on_mouse_wheel)
+            self._rowTitlesCanvas.bind_all("<Shift-Button-4>", self.on_shift_mouse_wheel)
+            self._rowTitlesCanvas.bind_all("<Shift-Button-5>", self.on_shift_mouse_wheel)
+            self._displayCanvas.bind_all("<Shift-Button-4>", self.on_shift_mouse_wheel)
+            self._displayCanvas.bind_all("<Shift-Button-5>", self.on_shift_mouse_wheel)
         else:
             # Vertical scrolling
             self._rowTitlesCanvas.bind_all("<MouseWheel>", self.on_mouse_wheel)

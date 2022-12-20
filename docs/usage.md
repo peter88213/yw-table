@@ -40,7 +40,7 @@ The path of the *.yw7* file.
 
 #### Add/remove relationships
 
-- Add/Remove relationships by klicking on the nodes with the `Alt` key pressed.
+- Add/Remove relationships by klicking on the nodes with the `Ctrl` key pressed.
 
 #### Open a project
 

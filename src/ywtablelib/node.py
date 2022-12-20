@@ -30,7 +30,7 @@ class Node(tk.Label):
         self._state = False
         super().__init__(master, cnf, **kw)
         self._set_color()
-        self.bind('<Alt-Button-1>', self._toggle_state)
+        self.bind('<Control-Button-1>', self._toggle_state)
 
     @property
     def state(self):

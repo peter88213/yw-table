@@ -5,6 +5,13 @@
 ## Changelog
 
 
+### v0.8.0 Alpha release
+
+- Fix a bug where horizontal scrolling doesn't work with Linux.
+- Toggle with <Ctrl>-Mouseclick. This is needed for Operation under XFCE.
+
+Based on PyWriter v9.0.5
+
 ### v0.7.0 Alpha release
 
 - Fix column width. 
