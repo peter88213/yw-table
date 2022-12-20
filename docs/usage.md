@@ -10,8 +10,11 @@ A scene relationship table for yWriter projects.
 
 The included installation script prompts you to create a shortcut on the desktop. 
 
-- If you double-click on the shortcut, the program starts with no project loaded.
-- If you drag a yWriter project and drop it on the icon, the program starts and displays the table. 
+- If you double-click on the shortcut, the program starts with the last opened yWriter project, if any. Otherwise, a "file open" dialog is displayed. Optionally, you can drag your yWriter 
+   project and drop it on the shortcut icon.
+
+- If the loaded file is not the project you want to view/edit, open another project via the 
+   **File > Open** command (or *Ctrl-O* shortcut). 
 
 ### Command line usage
 
@@ -60,6 +63,12 @@ The path of the *.yw7* file.
 - You can exit with **File > Exit** or **Ctrl-Q**.
 - When exiting the program, you will be asked for saving the project, if it has changed.
 
+
+## Installation path
+
+The setup script installs *yw_table.py* in the user profile. This is the installation path on Windows: 
+
+`c:\Users\<user name>\.pywriter\yw_table`
 
 ## License
 

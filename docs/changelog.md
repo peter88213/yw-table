@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### v0.7.0 Alpha release
+
+- Fix column width. 
+- Save last project and window size in a configuration file.
+- Add window icon.
+
+Based on PyWriter v9.0.5
+
 ### v0.6.0 Alpha release
 
 - Toggle with <Alt>-Mouseclick.

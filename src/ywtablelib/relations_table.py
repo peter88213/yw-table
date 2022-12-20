@@ -194,7 +194,7 @@ class RelationsTable:
 
                 # Display location nodes.
                 columns.append(tk.Frame(locationColumn))
-                columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
+                columns[col].pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
                 for scId in self._locationNodes:
                     bgr = row % 2
                     node = Node(columns[col],
@@ -238,7 +238,7 @@ class RelationsTable:
 
                 # Display item nodes.
                 columns.append(tk.Frame(itemColumn))
-                columns[col].pack(side=tk.LEFT, fill=tk.BOTH)
+                columns[col].pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
                 for scId in self._itemNodes:
                     bgr = row % 2
                     node = Node(columns[col],

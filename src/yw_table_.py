@@ -8,29 +8,33 @@ For further information see https://github.com/peter88213/yw-table
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import sys
-import tkinter as tk
+from pathlib import Path
 from tkinter import messagebox
+from pywriter.config.configuration import Configuration
 from pywriter.ui.main_tk import MainTk
+from pywriter.ui.set_icon_tk import *
 from ywtablelib.ywtable_globals import *
 from ywtablelib.relations_table import RelationsTable
 from ywtablelib.node import Node
 from ywtablelib.scrolled_window import ScrolledWindow
 
 APPLICATION = 'Relationship Table'
+APPNAME = 'yw_table'
+SETTINGS = dict(
+    yw_last_open='',
+    root_geometry='800x600',
+    color_text_bg='white',
+    color_text_fg='black',
+)
+OPTIONS = {}
 
 
 class TableManager(MainTk):
 
-    def __init__(self):
-        kwargs = {
-                'root_geometry': '800x600',
-                'yw_last_open': '',
-                'color_text_bg':'white',
-                'color_text_fg':'black',
-                }
+    def __init__(self, **kwargs):
         super().__init__(f'{APPLICATION}  @release', **kwargs)
         self.show_status(_('Use the mouse wheel for vertical scrolling, and <Shift>-mouse wheel for horizontal scrolling.'))
-        # self.root.state('zoom')
+        set_icon(self.root, icon='tLogo32')
 
     def open_project(self, fileName):
         super().open_project(fileName)
@@ -71,12 +75,42 @@ class TableManager(MainTk):
 
 
 def main():
-    ui = TableManager()
+    #--- Get the initial project file path.
     try:
-        ui.open_project(sys.argv[1])
+        filePath = sys.argv[1]
     except IndexError:
-        pass
+        filePath = None
+
+    #--- Load configuration.
+    try:
+        homeDir = str(Path.home()).replace('\\', '/')
+        installDir = f'{homeDir}/.pywriter/{APPNAME}/config'
+    except:
+        installDir = '.'
+    os.makedirs(installDir, exist_ok=True)
+    iniFile = f'{installDir}/{APPNAME}.ini'
+    configuration = Configuration(SETTINGS, OPTIONS)
+    configuration.read(iniFile)
+    kwargs = {}
+    kwargs.update(configuration.settings)
+    kwargs.update(configuration.options)
+
+    #--- Get initial project path.
+    if not filePath or not os.path.isfile(filePath):
+        filePath = kwargs['yw_last_open']
+
+    #--- Run the application.
+    ui = TableManager(**kwargs)
+    ui.open_project(filePath)
     ui.start()
+
+    #--- Save project specific configuration
+    for keyword in ui.kwargs:
+        if keyword in configuration.options:
+            configuration.options[keyword] = ui.kwargs[keyword]
+        elif keyword in configuration.settings:
+            configuration.settings[keyword] = ui.kwargs[keyword]
+    configuration.write(iniFile)
 
 
 if __name__ == '__main__':
