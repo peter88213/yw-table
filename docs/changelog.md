@@ -8,7 +8,7 @@
 ### v0.8.0 Alpha release
 
 - Fix a bug where horizontal scrolling doesn't work with Linux.
-- Toggle with <Ctrl>-Mouseclick. This is needed for Operation under XFCE.
+- Toggle with `Ctrl` + Mouseclick. This is needed for Operation under XFCE.
 
 Based on PyWriter v9.0.5
 
@@ -22,7 +22,7 @@ Based on PyWriter v9.0.5
 
 ### v0.6.0 Alpha release
 
-- Toggle with <Alt>-Mouseclick.
+- Toggle with `Alt` + Mouseclick.
 
 Based on PyWriter v9.0.5
 
