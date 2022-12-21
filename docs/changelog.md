@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.9.1 Alpha release
+
+- Widen narrow columns.
+
+Based on PyWriter v9.0.5
+
 ### v0.9.0 Alpha release
 
 - Change the node design.

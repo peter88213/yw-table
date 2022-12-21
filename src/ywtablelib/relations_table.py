@@ -29,6 +29,18 @@ class RelationsTable:
             novel -- Novel: Project reference.
             
         """
+
+        def fill_str(text):
+            """Return a string that is at least 7 characters long.
+            
+            Extend text with spaces so that it does not fall 
+            below the length of 7 characters.
+            This is for column titles, to widen narrow columns.
+            """
+            while len(text) < 7:
+                text = f' {text} '
+            return text
+
         self._novel = novel
         columns = []
         col = 0
@@ -96,8 +108,9 @@ class RelationsTable:
                 row = 1
                 bgr = row % 2
                 bgc = col % 2
+                arcTitle = fill_str(arc)
                 tk.Label(arcTitleWindow,
-                         text=arc,
+                         text=arcTitle,
                          bg=colorsBackground[bgr][bgc],
                          justify=tk.LEFT,
                          anchor=tk.W
@@ -118,7 +131,7 @@ class RelationsTable:
                     row += 1
                 bgr = row % 2
                 tk.Label(columns[col],
-                         text=arc,
+                         text=arcTitle,
                          bg=colorsBackground[bgr][bgc],
                          justify=tk.LEFT,
                          anchor=tk.W
@@ -140,8 +153,9 @@ class RelationsTable:
                 row = 1
                 bgr = row % 2
                 bgc = col % 2
+                characterTitle = fill_str(self._novel.characters[crId].title)
                 tk.Label(characterTitleWindow,
-                         text=self._novel.characters[crId].title,
+                         text=characterTitle,
                          bg=colorsBackground[bgr][bgc],
                          justify=tk.LEFT,
                          anchor=tk.W
@@ -162,7 +176,7 @@ class RelationsTable:
                     row += 1
                 bgr = row % 2
                 tk.Label(columns[col],
-                         text=self._novel.characters[crId].title,
+                         text=characterTitle,
                          bg=colorsBackground[bgr][bgc],
                          justify=tk.LEFT,
                          anchor=tk.W
@@ -184,8 +198,9 @@ class RelationsTable:
                 row = 1
                 bgr = row % 2
                 bgc = col % 2
+                locationTitle = fill_str(self._novel.locations[lcId].title)
                 tk.Label(locationTitleWindow,
-                         text=self._novel.locations[lcId].title,
+                         text=locationTitle,
                          bg=colorsBackground[bgr][bgc],
                          justify=tk.LEFT,
                          anchor=tk.W
@@ -206,7 +221,7 @@ class RelationsTable:
                     row += 1
                 bgr = row % 2
                 tk.Label(columns[col],
-                         text=self._novel.locations[lcId].title,
+                         text=locationTitle,
                          bg=colorsBackground[bgr][bgc],
                          justify=tk.LEFT,
                          anchor=tk.W
@@ -228,8 +243,9 @@ class RelationsTable:
                 row = 1
                 bgr = row % 2
                 bgc = col % 2
+                itemTitle = fill_str(self._novel.items[itId].title)
                 tk.Label(itemTitleWindow,
-                         text=self._novel.items[itId].title,
+                         text=itemTitle,
                          bg=colorsBackground[bgr][bgc],
                          justify=tk.LEFT,
                          anchor=tk.W
@@ -250,7 +266,7 @@ class RelationsTable:
                     row += 1
                 bgr = row % 2
                 tk.Label(columns[col],
-                         text=self._novel.items[itId].title,
+                         text=itemTitle,
                          bg=colorsBackground[bgr][bgc],
                          justify=tk.LEFT,
                          anchor=tk.W
