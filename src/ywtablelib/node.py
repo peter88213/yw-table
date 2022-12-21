@@ -14,22 +14,24 @@ class Node(tk.Label):
         isModified -- Boolean: True, if at least one instance has changed its state.
     
     Properties:
-        state -- Boolean: Node state. Changes its value and color when clicked on.
+        state -- Boolean: Node state. Changes its value and view when clicked on.
     """
     isModified = False
+    marker = '⬛'
 
     def __init__(self, master, colorFalse='white', colorTrue='black', cnf={}, **kw):
         """Place the node to the master widget.
         
         Optional arguments:
-            colorFalse -- str: node color when status is False.
-            colorTrue -- str: node color when status is True.
+            colorBg -- str: Background color.
+            colorFg -- str: Marker color when status is True.
         """
-        self.colorTrue = colorTrue
-        self.colorFalse = colorFalse
+        self.colorFg = colorTrue
+        self.colorBg = colorFalse
         self._state = False
         super().__init__(master, cnf, **kw)
-        self._set_color()
+        self.config(background=self.colorBg)
+        self.config(foreground=self.colorFg)
         self.bind('<Control-Button-1>', self._toggle_state)
 
     @property
@@ -39,13 +41,13 @@ class Node(tk.Label):
     @state.setter
     def state(self, newState):
         self._state = newState
-        self._set_color()
+        self._set_marker()
 
-    def _set_color(self):
+    def _set_marker(self):
         if self._state:
-            self.config(background=self.colorTrue)
+            self.config(text=self.marker)
         else:
-            self.config(background=self.colorFalse)
+            self.config(text='')
 
     def _toggle_state(self, event=None):
         self.state = not self._state

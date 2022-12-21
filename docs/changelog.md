@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.9.0 Alpha release
+
+- Change the node design.
+
+Based on PyWriter v9.0.5
+
 ### v0.8.0 Alpha release
 
 - Fix a bug where horizontal scrolling doesn't work with Linux.
