@@ -38,19 +38,14 @@ The path of the *.yw7* file.
 - Use the mouse wheel for vertical scrolling.
 - Use the mouse wheel with the `Shift` key pressed for horizontal scrolling.    
 
-#### Add/remove relationships
-
-- Add/Remove relationships by klicking on the nodes with the `Ctrl` key pressed.
-
 #### Open a project
 
 - If no project is specified by dragging and dropping on the program icon,
   tyou canload one with **File > Open** or **Ctrl-O**.
 
-#### Save the project
+#### Add/remove relationships
 
-- You can save the project with **File > Save** or **Ctrl-S**.
-- If the project is open in yWriter, you will be asked to exit yWriter first.
+- Add/Remove relationships by klicking on the nodes with the `Ctrl` key pressed.
 
 #### Close the project
 
