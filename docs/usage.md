@@ -33,7 +33,7 @@ The path of the *.yw7* file.
 
 ### Operation
 
-#### Scrolling
+#### Mouse wheel
 
 - Use the mouse wheel for vertical scrolling.
 - Use the mouse wheel with the `Shift` key pressed for horizontal scrolling.    

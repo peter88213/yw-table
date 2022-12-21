@@ -1,30 +1,48 @@
-"""Provide a frame with a vertical scrollbar. 
+"""Provide tkinter frame for a scrollable table.
+
+The frame is divided into four sections, each containing one "public" frame:
+
++-----------+--------------+
+|  topLeft  | columnTitles |
++-----------+--------------+
+| rowTitles |   display    |
++-----------+--------------+
+
+- topLeft is not scrollable. 
+- columnTitles and display are simultaneously vertically scrollable.
+- rowTitles and display are simultaneously horizontally scrollable.
+
+Mouse wheel
+
+- Use the mouse wheel for vertical scrolling.
+- Use the mouse wheel with the `Shift` key pressed for horizontal scrolling.    
+
 
 Based on the VerticalScrolledFrame example class shown and discussed here:
 https://stackoverflow.com/questions/16188420/tkinter-scrollbar-for-frame
 https://stackoverflow.com/questions/4066974/scrolling-multiple-tkinter-listboxes-together
 
-Mouse wheel binding as proposed by Bryan Oakley:
+Mouse wheel binding as proposed here:
 https://stackoverflow.com/questions/17355902/tkinter-binding-mousewheel-to-scrollbar
+https://stackoverflow.com/questions/63629407/tkinter-how-to-stop-scrolling-above-canvas-window
 
 Copyright (c) 2022 Peter Triesberger
-For further information see https://github.com/peter88213/yw-table
-License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
+https://github.com/peter88213
+Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 """
 import platform
 import tkinter as tk
 from tkinter import ttk
 
 
-class ScrolledWindow(ttk.Frame):
-    """A Window for a scrollable table. 
+class TableFrame(ttk.Frame):
+    """A tkinter framew for a scrollable table. 
     
     Public instance variables:
         rowTitles -- ttk.Frame for a vertically scrolled column of row titles. 
         columnTitles -- ttk.Frame for a horizontally scrolled row of column titles. 
         display -- ttk.Frame for columns and rows to be displayed and scrolled in both directions.
         
-    Use the mouse wheel for vertical scrolling, and <Shift>-mouse wheel for horizontal scrolling.    
     """
 
     def __init__(self, parent, *args, **kw):
@@ -32,12 +50,10 @@ class ScrolledWindow(ttk.Frame):
         ttk.Frame.__init__(self, parent, *args, **kw)
 
         # Scrollbars.
-        # Note: For some unknown reason the code for the scrollbars does not work as desired.
-        # Therefore it is completely commented out.
-        # #scrollY = ttk.Scrollbar(self, orient=tk.VERTICAL, command=self.yview)
-        # #scrollY.pack(fill=tk.Y, side=tk.RIGHT, expand=False)
-        # #scrollX = ttk.Scrollbar(self, orient=tk.HORIZONTAL, command=self.xview)
-        # #scrollX.pack(fill=tk.X, side=tk.BOTTOM, expand=False)
+        scrollY = ttk.Scrollbar(self, orient=tk.VERTICAL, command=self.yview)
+        scrollY.pack(fill=tk.Y, side=tk.RIGHT, expand=False)
+        scrollX = ttk.Scrollbar(self, orient=tk.HORIZONTAL, command=self.xview)
+        scrollX.pack(fill=tk.X, side=tk.BOTTOM, expand=False)
 
         # Left column frame.
         leftColFrame = ttk.Frame(self)
@@ -51,11 +67,10 @@ class ScrolledWindow(ttk.Frame):
         rowTitlesFrame = ttk.Frame(leftColFrame)
         rowTitlesFrame.pack(fill=tk.BOTH, expand=True)
         self._rowTitlesCanvas = tk.Canvas(rowTitlesFrame, bd=0, highlightthickness=0)
-        # #self._rowTitlesCanvas.configure(yscrollcommand=scrollY.set)
+        self._rowTitlesCanvas.configure(yscrollcommand=scrollY.set)
         self._rowTitlesCanvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self._rowTitlesCanvas.xview_moveto(0)
         self._rowTitlesCanvas.yview_moveto(0)
-        # self._rowTitlesCanvas.bind("<MouseWheel>", self.on_mouse_wheel)
 
         # Create a frame inside the row titles canvas which will be scrolled with it.
         self.rowTitles = ttk.Frame(self._rowTitlesCanvas)
@@ -80,7 +95,7 @@ class ScrolledWindow(ttk.Frame):
         columnTitlesFrame = ttk.Frame(rightColFrame)
         columnTitlesFrame.pack(fill=tk.X, anchor=tk.NW, expand=False)
         self._columnTitlesCanvas = tk.Canvas(columnTitlesFrame, bd=0, highlightthickness=0)
-        # #self._columnTitlesCanvas.configure(xscrollcommand=scrollX.set)
+        self._columnTitlesCanvas.configure(xscrollcommand=scrollX.set)
         self._columnTitlesCanvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self._columnTitlesCanvas.xview_moveto(0)
         self._columnTitlesCanvas.yview_moveto(0)
@@ -106,8 +121,8 @@ class ScrolledWindow(ttk.Frame):
         displayFrame = ttk.Frame(rightColFrame)
         displayFrame.pack(fill=tk.BOTH, expand=True)
         self._displayCanvas = tk.Canvas(displayFrame, bd=0, highlightthickness=0)
-        # #self._displayCanvas.configure(xscrollcommand=scrollX.set)
-        # #self._displayCanvas.configure(yscrollcommand=scrollY.set)
+        self._displayCanvas.configure(xscrollcommand=scrollX.set)
+        self._displayCanvas.configure(yscrollcommand=scrollY.set)
         self._displayCanvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self._displayCanvas.xview_moveto(0)
         self._displayCanvas.yview_moveto(0)
@@ -147,42 +162,44 @@ class ScrolledWindow(ttk.Frame):
             self._displayCanvas.bind_all("<Shift-MouseWheel>", self.on_shift_mouse_wheel)
 
     def yview(self, *args):
-        self._columnTitlesCanvas.yview(*args)
+        self._rowTitlesCanvas.yview(*args)
         self._displayCanvas.yview(*args)
 
     def xview(self, *args):
-        self._rowTitlesCanvas.xview(*args)
+        self._columnTitlesCanvas.xview(*args)
         self._displayCanvas.xview(*args)
+
+    def yview_scroll(self, *args):
+        if not self._displayCanvas.yview() == (0.0, 1.0):
+            self._rowTitlesCanvas.yview_scroll(*args)
+            self._displayCanvas.yview_scroll(*args)
+
+    def xview_scroll(self, *args):
+        if not self._displayCanvas.xview() == (0.0, 1.0):
+            self._columnTitlesCanvas.xview_scroll(*args)
+            self._displayCanvas.xview_scroll(*args)
 
     def on_mouse_wheel(self, event):
         """Vertical scrolling."""
         if platform.system() == 'Windows':
-            self._rowTitlesCanvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
-            self._displayCanvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+            self.yview_scroll(int(-1 * (event.delta / 120)), "units")
         elif platform.system() == 'Darwin':
-            self._rowTitlesCanvas.yview_scroll(int(-1 * event.delta), "units")
-            self._displayCanvas.yview_scroll(int(-1 * event.delta), "units")
+            self.yview_scroll(int(-1 * event.delta), "units")
         else:
             if event.num == 4:
-                self._rowTitlesCanvas.yview_scroll(-1, "units")
-                self._displayCanvas.yview_scroll(-1, "units")
+                self.yview_scroll(-1, "units")
             elif event.num == 5:
-                self._rowTitlesCanvas.yview_scroll(1, "units")
-                self._displayCanvas.yview_scroll(1, "units")
+                self.yview_scroll(1, "units")
 
     def on_shift_mouse_wheel(self, event):
         """Horizontal scrolling."""
         if platform.system() == 'Windows':
-            self._columnTitlesCanvas.xview_scroll(int(-1 * (event.delta / 120)), "units")
-            self._displayCanvas.xview_scroll(int(-1 * (event.delta / 120)), "units")
+            self.xview_scroll(int(-1 * (event.delta / 120)), "units")
         elif platform.system() == 'Darwin':
-            self._columnTitlesCanvas.xview_scroll(int(-1 * event.delta), "units")
-            self._displayCanvas.xview_scroll(int(-1 * event.delta), "units")
+            self.xview_scroll(int(-1 * event.delta), "units")
         else:
             if event.num == 4:
-                self._columnTitlesCanvas.xview_scroll(-1, "units")
-                self._displayCanvas.xview_scroll(-1, "units")
+                self.xview_scroll(-1, "units")
             elif event.num == 5:
-                self._columnTitlesCanvas.xview_scroll(1, "units")
-                self._displayCanvas.xview_scroll(1, "units")
+                self.xview_scroll(1, "units")
 
