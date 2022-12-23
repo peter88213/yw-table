@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.11.0 Beta release
+
+- API modification: Move the table_frame module.
+
+Based on PyWriter v9.0.5
+
 ### v0.10.0 Beta release
 
 - Make the scrollbars work.

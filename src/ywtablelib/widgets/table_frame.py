@@ -1,4 +1,4 @@
-"""Provide tkinter frame for a scrollable table.
+"""Provide a tkinter frame for a scrollable table.
 
 The frame is divided into four sections, each containing one "public" frame:
 
