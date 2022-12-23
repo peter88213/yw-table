@@ -9,8 +9,8 @@ The frame is divided into four sections, each containing one "public" frame:
 +-----------+--------------+
 
 - topLeft is not scrollable. 
-- columnTitles and display are simultaneously vertically scrollable.
-- rowTitles and display are simultaneously horizontally scrollable.
+- rowTitles and display are simultaneously vertically scrollable.
+- columnTitles and display are simultaneously horizontally scrollable.
 
 Mouse wheel
 
