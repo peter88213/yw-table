@@ -14,11 +14,6 @@ __all__ = ['Error',
            'norm_path',
            'LOCALE_PATH',
            'CURRENT_LANGUAGE',
-           'colorsBackground',
-           'colorsArc',
-           'colorsCharacter',
-           'colorsLocation',
-           'colorsItem',
            'string_to_list',
            'list_to_string',
            ]
@@ -44,13 +39,6 @@ def norm_path(path):
     if path is None:
         path = ''
     return os.path.normpath(path)
-
-
-colorsBackground = (('gray80', 'gray85'), ('gray95', 'white'))
-colorsArc = ('royalBlue1', 'royalBlue3')
-colorsCharacter = ('goldenrod1', 'goldenrod3')
-colorsLocation = ('coral1', 'coral3')
-colorsItem = ('aquamarine1', 'aquamarine3')
 
 
 def string_to_list(text, divider=';'):

@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.12.0 Beta release
+
+- Make colors customizable.
+
+Based on PyWriter v9.0.5
+
 ### v0.11.0 Beta release
 
 - API modification: Move the table_frame module.
