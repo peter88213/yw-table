@@ -5,6 +5,13 @@
 ## Changelog
 
 
+### v0.13.0 Beta release
+
+- Use "Subplot" as an arc, if at least one scene is assigned, and there are no other arcs.
+- Improve error handling in case the project is open in yWriter.
+
+Based on PyWriter v9.0.5
+
 ### v0.12.0 Beta release
 
 - Make colors customizable.

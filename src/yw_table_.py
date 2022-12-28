@@ -47,7 +47,8 @@ class TableManager(MainTk):
         self._kwargs = kwargs
 
     def open_project(self, fileName):
-        super().open_project(fileName)
+        if not super().open_project(fileName):
+            return
 
         #--- The Relationship Table.
         Node.isModified = False
@@ -65,7 +66,10 @@ class TableManager(MainTk):
     def close_project(self, event=None):
         self._apply_changes()
         self._relationsTable = None
-        self._tableWindow.destroy()
+        try:
+            self._tableWindow.destroy()
+        except AttributeError:
+            pass
         super().close_project()
 
     def on_quit(self, event=None):
@@ -111,7 +115,10 @@ def main():
 
     #--- Run the application.
     ui = TableManager(**kwargs)
-    ui.open_project(filePath)
+    try:
+        ui.open_project(filePath)
+    except Error as ex:
+        ui.set_info_how(str(ex))
     ui.start()
 
     #--- Save project specific configuration

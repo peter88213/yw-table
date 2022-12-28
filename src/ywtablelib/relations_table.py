@@ -87,6 +87,7 @@ class RelationsTable:
                          ).pack(fill=tk.X)
 
         #--- Arc columns.
+        self._showSubplot = False
         self._arcs = []
         self._scnArcs = {}
         for scId in self._arcNodes:
@@ -97,6 +98,15 @@ class RelationsTable:
                         self._arcs.append(arc)
             else:
                 self._scnArcs[scId] = []
+            if self._novel.scenes[scId].isSubPlot:
+                self._showSubplot = True
+
+        if self._showSubplot and not self._arcs:
+            self._arcs.append('Subplot')
+            for scId in self._arcNodes:
+                if self._novel.scenes[scId].isSubPlot:
+                    self._scnArcs[scId] = ['Subplot']
+
         if self._arcs:
             arcTitleWindow = tk.Frame(master.columnTitles)
             arcTitleWindow.pack(side=tk.LEFT, fill=tk.BOTH)
@@ -318,7 +328,13 @@ class RelationsTable:
                 else:
                     if node.state:
                         arcs.append(arc)
-            self._novel.scenes[scId].scnArcs = list_to_string(arcs)
+            if self._showSubplot:
+                if arcs:
+                    self._novel.scenes[scId].isSubPlot = True
+                else:
+                    self._novel.scenes[scId].isSubPlot = False
+            else:
+                self._novel.scenes[scId].scnArcs = list_to_string(arcs)
 
         for scId in self._characterNodes:
             self._novel.scenes[scId].characters = []
