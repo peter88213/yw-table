@@ -87,7 +87,7 @@ class RelationsTable:
                          ).pack(fill=tk.X)
 
         #--- Arc columns.
-        self._showSubplot = False
+        hasSubplot = False
         self._arcs = []
         self._scnArcs = {}
         for scId in self._arcNodes:
@@ -99,9 +99,11 @@ class RelationsTable:
             else:
                 self._scnArcs[scId] = []
             if self._novel.scenes[scId].isSubPlot:
-                self._showSubplot = True
+                hasSubplot = True
 
-        if self._showSubplot and not self._arcs:
+        self._showSubplot = False
+        if hasSubplot and not self._arcs:
+            self._showSubplot = True
             self._arcs.append('Subplot')
             for scId in self._arcNodes:
                 if self._novel.scenes[scId].isSubPlot:
