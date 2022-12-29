@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.14.2\n"
-"POT-Creation-Date: 2022-12-29 19:10:45\n"
-"PO-Revision-Date: 2022-12-29 19:10:45\n"
+"Project-Id-Version: 0.15.0\n"
+"POT-Creation-Date: 2022-12-29 20:10:34\n"
+"PO-Revision-Date: 2022-12-29 20:10:34\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -52,11 +52,17 @@ msgstr "Datei"
 msgid "File written"
 msgstr "Datei geschrieben"
 
+msgid "Help"
+msgstr "Hilfe"
+
 msgid "Items"
 msgstr "Gegenstände"
 
 msgid "Locations"
 msgstr "Schauplätze"
+
+msgid "Online help"
+msgstr "Online-Hilfe"
 
 msgid "Open..."
 msgstr "Öffnen"

@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.15.0 Beta release
+
+- Add a "Help" menu.
+
+Based on PyWriter v9.0.5
+
 ### v0.14.2 Beta release
 
 - Disable the "Export" menu entry when no project is open. 

@@ -9,6 +9,7 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import sys
 from pathlib import Path
+import webbrowser
 from tkinter import messagebox
 from pywriter.config.configuration import Configuration
 from pywriter.ui.main_tk import MainTk
@@ -44,13 +45,20 @@ OPTIONS = {}
 
 
 class TableManager(MainTk):
+    _HELP_URL = 'https://peter88213.github.io/yw-table/usage'
 
     def __init__(self, **kwargs):
         super().__init__(f'{APPLICATION}  @release', **kwargs)
         set_icon(self.root, icon='tLogo32')
 
+        # Export
         self.mainMenu.add_command(label=_('Export'), command=self._export_table)
         self.mainMenu.entryconfig(_('Export'), state='disabled')
+
+        # Help
+        self.helpMenu = tk.Menu(self.mainMenu, tearoff=0)
+        self.mainMenu.add_cascade(label=_('Help'), menu=self.helpMenu)
+        self.helpMenu.add_command(label=_('Online help'), command=lambda: webbrowser.open(self._HELP_URL))
 
     def open_project(self, fileName):
         if not super().open_project(fileName):
