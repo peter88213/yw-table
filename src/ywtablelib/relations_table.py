@@ -91,13 +91,10 @@ class RelationsTable:
         self._arcs = []
         self._scnArcs = {}
         for scId in self._arcNodes:
-            if self._novel.scenes[scId].scnArcs:
-                self._scnArcs[scId] = string_to_list(self._novel.scenes[scId].scnArcs)
-                for arc in self._scnArcs[scId]:
-                    if not arc in self._arcs:
-                        self._arcs.append(arc)
-            else:
-                self._scnArcs[scId] = []
+            self._scnArcs[scId] = string_to_list(self._novel.scenes[scId].scnArcs)
+            for arc in self._scnArcs[scId]:
+                if not arc in self._arcs:
+                    self._arcs.append(arc)
             if self._novel.scenes[scId].isSubPlot:
                 hasSubplot = True
 

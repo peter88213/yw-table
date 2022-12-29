@@ -71,8 +71,30 @@ class CsvTable:
             with open(self.filePath, 'w', newline='', encoding='utf-16') as f:
                 writer = csv.writer(f, dialect='excel-tab')
 
+                # Get arcs.
+                hasSubplot = False
+                arcs = []
+                scnArcs = {}
+                for chId in self.novel.srtChapters:
+                    for scId in self.novel.chapters[chId].srtScenes:
+                        if self.novel.scenes[scId].scType == 0:
+                            scnArcs[scId] = string_to_list(self.novel.scenes[scId].scnArcs)
+                            for arc in scnArcs[scId]:
+                                if not arc in arcs:
+                                    arcs.append(arc)
+                            if self.novel.scenes[scId].isSubPlot:
+                                hasSubplot = True
+
+                if hasSubplot and not arcs:
+                    arcs.append('Subplot')
+                for scId in scnArcs:
+                    if self.novel.scenes[scId].isSubPlot:
+                        scnArcs[scId] = ['Subplot']
+
                 # Title row.
                 row = ['']
+                for arc in arcs:
+                    row.append(arc)
                 for crId in self.novel.characters:
                     row.append(self.novel.characters[crId].title)
                 for lcId in self.novel.locations:
@@ -82,36 +104,39 @@ class CsvTable:
                 writer.writerow(row)
 
                 # Scene rows.
-                for chId in self.novel.srtChapters:
-                    for scId in self.novel.chapters[chId].srtScenes:
-                        if self.novel.scenes[scId].scType == 0:
-                            row = [self.novel.scenes[scId].title]
-                            for crId in self.novel.srtCharacters:
-                                try:
-                                    if crId in self.novel.scenes[scId].characters:
-                                        row.append(self._csvTrue)
-                                    else:
-                                        row.append(self._csvFalse)
-                                except:
-                                    row.append(self._csvFalse)
-                            for lcId in self.novel.srtLocations:
-                                try:
-                                    if lcId in self.novel.scenes[scId].locations:
-                                        row.append(self._csvTrue)
-                                    else:
-                                        row.append(self._csvFalse)
-                                except:
-                                    row.append(self._csvFalse)
-                            for itId in self.novel.srtItems:
-                                try:
-                                    if itId in self.novel.scenes[scId].items:
-                                        row.append(self._csvTrue)
-                                    else:
-                                        row.append(self._csvFalse)
-                                except:
-                                    row.append(self._csvFalse)
-                            writer.writerow(row)
-        except Error:
+                for scId in scnArcs:
+                    row = [self.novel.scenes[scId].title]
+                    for arc in arcs:
+                        if arc in scnArcs[scId]:
+                            row.append(self._csvTrue)
+                        else:
+                            row.append(self._csvFalse)
+                    for crId in self.novel.srtCharacters:
+                        try:
+                            if crId in self.novel.scenes[scId].characters:
+                                row.append(self._csvTrue)
+                            else:
+                                row.append(self._csvFalse)
+                        except:
+                            row.append(self._csvFalse)
+                    for lcId in self.novel.srtLocations:
+                        try:
+                            if lcId in self.novel.scenes[scId].locations:
+                                row.append(self._csvTrue)
+                            else:
+                                row.append(self._csvFalse)
+                        except:
+                            row.append(self._csvFalse)
+                    for itId in self.novel.srtItems:
+                        try:
+                            if itId in self.novel.scenes[scId].items:
+                                row.append(self._csvTrue)
+                            else:
+                                row.append(self._csvFalse)
+                        except:
+                            row.append(self._csvFalse)
+                    writer.writerow(row)
+        except:
             raise Error(f'{_("Cannot write File")}: "{norm_path(self.filePath)}".')
 
         return (f'{_("File written")}: "{norm_path(self.filePath)}".')
