@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.15.1 Beta release
+
+- Export tab-delimited, utf-16 encoded csv files that can be opened with Excel 2007.
+
+Based on PyWriter v9.0.5
+
 ### v0.15.0 Beta release
 
 - Add a "Help" menu.

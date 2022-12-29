@@ -68,8 +68,8 @@ class CsvTable:
         This is a stub to be overridden by subclass methods.
         """
         try:
-            with open(self.filePath, 'w', newline='', encoding='utf-8') as f:
-                writer = csv.writer(f, dialect='excel')
+            with open(self.filePath, 'w', newline='', encoding='utf-16') as f:
+                writer = csv.writer(f, dialect='excel-tab')
 
                 # Title row.
                 row = ['']
@@ -111,7 +111,7 @@ class CsvTable:
                                 except:
                                     row.append(self._csvFalse)
                             writer.writerow(row)
-        except:
+        except Error:
             raise Error(f'{_("Cannot write File")}: "{norm_path(self.filePath)}".')
 
         return (f'{_("File written")}: "{norm_path(self.filePath)}".')
