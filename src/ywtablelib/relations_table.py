@@ -58,7 +58,7 @@ class RelationsTable:
         self._characterNodes = {}
         self._locationNodes = {}
         self._itemNodes = {}
-        for chId in self._novel.chapters:
+        for chId in self._novel.srtChapters:
             for scId in self._novel.chapters[chId].srtScenes:
                 bgr = row % 2
                 if self._novel.scenes[scId].scType != 0:
@@ -162,7 +162,7 @@ class RelationsTable:
             characterTitleWindow = tk.Frame(master.columnTitles)
             characterTitleWindow.pack(side=tk.LEFT, fill=tk.BOTH)
             tk.Label(characterTitleWindow, text=_('Characters'), bg=kwargs['color_character_heading']).pack(fill=tk.X)
-            for crId in self._novel.characters:
+            for crId in self._novel.srtCharacters:
                 # Display character titles.
                 row = 1
                 bgr = row % 2
@@ -207,7 +207,7 @@ class RelationsTable:
             locationTitleWindow = tk.Frame(master.columnTitles)
             locationTitleWindow.pack(side=tk.LEFT, fill=tk.BOTH)
             tk.Label(locationTitleWindow, text=_('Locations'), bg=kwargs['color_location_heading']).pack(fill=tk.X)
-            for lcId in self._novel.locations:
+            for lcId in self._novel.srtLocations:
                 # Display location titles.
                 row = 1
                 bgr = row % 2
@@ -252,7 +252,7 @@ class RelationsTable:
             itemTitleWindow = tk.Frame(master.columnTitles)
             itemTitleWindow.pack(side=tk.LEFT, fill=tk.BOTH)
             tk.Label(itemTitleWindow, text=_('Items'), bg=kwargs['color_item_heading']).pack(fill=tk.X)
-            for itId in self._novel.items:
+            for itId in self._novel.srtItems:
                 # Display item titles.
                 row = 1
                 bgr = row % 2

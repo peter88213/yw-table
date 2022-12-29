@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### v0.14.2 Beta release
+
+- Disable the "Export" menu entry when no project is open. 
+- Catch general exceptions.
+- Iterate sorted lists instead of dictionaries.
+
+Based on PyWriter v9.0.5
+
 ### v0.14.1 Beta release
 
 - Add csv table export.

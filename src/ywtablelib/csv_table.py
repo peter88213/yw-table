@@ -82,33 +82,33 @@ class CsvTable:
                 writer.writerow(row)
 
                 # Scene rows.
-                for chId in self.novel.chapters:
+                for chId in self.novel.srtChapters:
                     for scId in self.novel.chapters[chId].srtScenes:
                         if self.novel.scenes[scId].scType == 0:
                             row = [self.novel.scenes[scId].title]
-                            for crId in self.novel.characters:
+                            for crId in self.novel.srtCharacters:
                                 try:
                                     if crId in self.novel.scenes[scId].characters:
                                         row.append(self._csvTrue)
                                     else:
                                         row.append(self._csvFalse)
-                                except TypeError:
+                                except:
                                     row.append(self._csvFalse)
-                            for lcId in self.novel.locations:
+                            for lcId in self.novel.srtLocations:
                                 try:
                                     if lcId in self.novel.scenes[scId].locations:
                                         row.append(self._csvTrue)
                                     else:
                                         row.append(self._csvFalse)
-                                except TypeError:
+                                except:
                                     row.append(self._csvFalse)
-                            for itId in self.novel.items:
+                            for itId in self.novel.srtItems:
                                 try:
                                     if itId in self.novel.scenes[scId].items:
                                         row.append(self._csvTrue)
                                     else:
                                         row.append(self._csvFalse)
-                                except TypeError:
+                                except:
                                     row.append(self._csvFalse)
                             writer.writerow(row)
         except:

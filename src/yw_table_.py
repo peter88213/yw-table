@@ -50,6 +50,7 @@ class TableManager(MainTk):
         set_icon(self.root, icon='tLogo32')
 
         self.mainMenu.add_command(label=_('Export'), command=self._export_table)
+        self.mainMenu.entryconfig(_('Export'), state='disabled')
 
     def open_project(self, fileName):
         if not super().open_project(fileName):
@@ -67,6 +68,9 @@ class TableManager(MainTk):
 
             # Set table data.
             self._relationsTable.set_nodes()
+
+            # Enable export.
+            self.mainMenu.entryconfig(_('Export'), state='normal')
 
     def close_project(self, event=None):
         self._apply_changes()
@@ -98,7 +102,7 @@ class TableManager(MainTk):
         try:
             self.kwargs['suffix'] = CsvTable.SUFFIX
             __, target = exportTargetFactory.make_file_objects(self.prjFile.filePath, **self.kwargs)
-        except Error as ex:
+        except Exception as ex:
             self.set_info_how(f'!{str(ex)}')
             return
 
@@ -106,10 +110,26 @@ class TableManager(MainTk):
         target.novel = self.novel
         try:
             message = target.write()
-        except Error as ex:
+        except Exception as ex:
             self.set_info_how(f'!{str(ex)}')
         else:
             self.set_info_how(message)
+
+    def disable_menu(self):
+        """Disable menu entries when no project is open.
+        
+        Extends the superclass method.
+        """
+        self.mainMenu.entryconfig(_('Export'), state='disabled')
+        super().disable_menu()
+
+    def enable_menu(self):
+        """Enable menu entries when a project is open.
+        
+        Extends the superclass method.
+        """
+        self.mainMenu.entryconfig(_('Export'), state='normal')
+        super().enable_menu()
 
 
 def main():
