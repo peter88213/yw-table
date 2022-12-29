@@ -35,12 +35,13 @@ class CsvTable:
         Extends the superclass constructor.          
         """
         self.novel = None
-
         self._filePath = None
         # str
         # Path to the file. The setter only accepts files of a supported type as specified by EXTENSION.
 
         self.filePath = filePath
+        self._csvTrue = kwargs['csv_true']
+        self._csvFalse = kwargs['csv_false']
 
     @property
     def filePath(self):
@@ -60,7 +61,7 @@ class CsvTable:
         if filePath.lower().endswith(f'{suffix}{self.EXTENSION}'.lower()):
             self._filePath = filePath
 
-    def write(self, **kwargs):
+    def write(self):
         """Write the relations to the file.
         
         Raise the "Error" exception in case of error. 
@@ -88,27 +89,27 @@ class CsvTable:
                             for crId in self.novel.characters:
                                 try:
                                     if crId in self.novel.scenes[scId].characters:
-                                        row.append(kwargs['csv_true'])
+                                        row.append(self._csvTrue)
                                     else:
-                                        row.append(kwargs['csv_false'])
+                                        row.append(self._csvFalse)
                                 except TypeError:
-                                    row.append(kwargs['csv_false'])
+                                    row.append(self._csvFalse)
                             for lcId in self.novel.locations:
                                 try:
                                     if lcId in self.novel.scenes[scId].locations:
-                                        row.append(kwargs['csv_true'])
+                                        row.append(self._csvTrue)
                                     else:
-                                        row.append(kwargs['csv_false'])
+                                        row.append(self._csvFalse)
                                 except TypeError:
-                                    row.append(kwargs['csv_false'])
+                                    row.append(self._csvFalse)
                             for itId in self.novel.items:
                                 try:
                                     if itId in self.novel.scenes[scId].items:
-                                        row.append(kwargs['csv_true'])
+                                        row.append(self._csvTrue)
                                     else:
-                                        row.append(kwargs['csv_false'])
+                                        row.append(self._csvFalse)
                                 except TypeError:
-                                    row.append(kwargs['csv_false'])
+                                    row.append(self._csvFalse)
                             writer.writerow(row)
         except:
             raise Error(f'{_("Cannot write File")}: "{norm_path(self.filePath)}".')

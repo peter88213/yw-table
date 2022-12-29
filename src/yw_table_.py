@@ -48,7 +48,6 @@ class TableManager(MainTk):
     def __init__(self, **kwargs):
         super().__init__(f'{APPLICATION}  @release', **kwargs)
         set_icon(self.root, icon='tLogo32')
-        self._kwargs = kwargs
 
         self.mainMenu.add_command(label=_('Export'), command=self._export_table)
 
@@ -64,7 +63,7 @@ class TableManager(MainTk):
             self._tableWindow.pack(fill=tk.BOTH, expand=True)
 
             # Build the table structure.
-            self._relationsTable = RelationsTable(self._tableWindow, self.novel, **self._kwargs)
+            self._relationsTable = RelationsTable(self._tableWindow, self.novel, **self.kwargs)
 
             # Set table data.
             self._relationsTable.set_nodes()
@@ -97,7 +96,8 @@ class TableManager(MainTk):
         """Export the table as a csv file."""
         exportTargetFactory = ExportTargetFactory([CsvTable])
         try:
-            __, target = exportTargetFactory.make_file_objects(self.prjFile.filePath, suffix=CsvTable.SUFFIX)
+            self.kwargs['suffix'] = CsvTable.SUFFIX
+            __, target = exportTargetFactory.make_file_objects(self.prjFile.filePath, **self.kwargs)
         except Error as ex:
             self.set_info_how(f'!{str(ex)}')
             return
@@ -105,7 +105,7 @@ class TableManager(MainTk):
         self._apply_changes()
         target.novel = self.novel
         try:
-            message = target.write(**self._kwargs)
+            message = target.write()
         except Error as ex:
             self.set_info_how(f'!{str(ex)}')
         else:

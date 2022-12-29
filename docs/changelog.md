@@ -5,7 +5,7 @@
 ## Changelog
 
 
-### v0.14.0 Beta release
+### v0.14.1 Beta release
 
 - Add csv table export.
 
