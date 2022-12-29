@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.13.1\n"
-"POT-Creation-Date: 2022-12-28 21:44:04\n"
-"PO-Revision-Date: 2022-12-28 21:44:04\n"
+"Project-Id-Version: 0.14.0\n"
+"POT-Creation-Date: 2022-12-29 11:58:44\n"
+"PO-Revision-Date: 2022-12-29 11:58:44\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,10 @@ msgid "Can not process file"
 msgstr "Kann Datei nicht verarbeiten"
 
 msgid "Cannot overwrite file"
-msgstr "Kann Datei nicht überwchreiben"
+msgstr "Kann Datei nicht überschreiben"
+
+msgid "Cannot write File"
+msgstr "Kann Datei nicht schreiben"
 
 msgid "Cannot write file"
 msgstr "Kann Datei nicht schreiben"
@@ -37,8 +40,17 @@ msgstr "Schließen"
 msgid "Exit"
 msgstr "Beenden"
 
+msgid "Export"
+msgstr "Exportieren"
+
+msgid "Export type is not supported"
+msgstr "Exporttyp wird nicht unterstützt"
+
 msgid "File"
 msgstr "Datei"
+
+msgid "File written"
+msgstr "Datei geschrieben"
 
 msgid "Items"
 msgstr "Gegenstände"
@@ -60,6 +72,9 @@ msgstr "Projekt ohne Titel"
 
 msgid "by"
 msgstr "von"
+
+msgid "csv Table"
+msgstr "csv-Tabelle"
 
 msgid "yWriter 7 project"
 msgstr "yWriter 7-Projekt"

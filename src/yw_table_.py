@@ -13,10 +13,12 @@ from tkinter import messagebox
 from pywriter.config.configuration import Configuration
 from pywriter.ui.main_tk import MainTk
 from pywriter.ui.set_icon_tk import *
+from pywriter.converter.export_target_factory import ExportTargetFactory
 from ywtablelib.ywtable_globals import *
 from ywtablelib.relations_table import RelationsTable
 from ywtablelib.node import Node
 from ywtablelib.widgets.table_frame import TableFrame
+from ywtablelib.csv_table import CsvTable
 
 APPLICATION = 'Relationship Table'
 APPNAME = 'yw_table'
@@ -35,6 +37,8 @@ SETTINGS = dict(
     color_location_node='coral3',
     color_item_heading='aquamarine1',
     color_item_node='aquamarine3',
+    csv_true='1',
+    csv_false='0',
 )
 OPTIONS = {}
 
@@ -45,6 +49,8 @@ class TableManager(MainTk):
         super().__init__(f'{APPLICATION}  @release', **kwargs)
         set_icon(self.root, icon='tLogo32')
         self._kwargs = kwargs
+
+        self.mainMenu.add_command(label=_('Export'), command=self._export_table)
 
     def open_project(self, fileName):
         if not super().open_project(fileName):
@@ -77,7 +83,7 @@ class TableManager(MainTk):
         super().on_quit()
 
     def _apply_changes(self):
-        #--- Apply changes.
+        """Apply node changes to the project."""
         if Node.isModified:
             if messagebox.askyesno(APPLICATION, f"{_('Apply changes')}?"):
                 self._relationsTable.get_nodes()
@@ -86,6 +92,24 @@ class TableManager(MainTk):
                 except Error as ex:
                     self.set_info_how(f'!{str(ex)}')
             Node.isModified = False
+
+    def _export_table(self):
+        """Export the table as a csv file."""
+        exportTargetFactory = ExportTargetFactory([CsvTable])
+        try:
+            __, target = exportTargetFactory.make_file_objects(self.prjFile.filePath, suffix=CsvTable.SUFFIX)
+        except Error as ex:
+            self.set_info_how(f'!{str(ex)}')
+            return
+
+        self._apply_changes()
+        target.novel = self.novel
+        try:
+            message = target.write(**self._kwargs)
+        except Error as ex:
+            self.set_info_how(f'!{str(ex)}')
+        else:
+            self.set_info_how(message)
 
 
 def main():

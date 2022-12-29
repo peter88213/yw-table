@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.14.0 Beta release
+
+- Add csv table export.
+
+Based on PyWriter v9.0.5
+
 ### v0.13.1 Beta release
 
 - Fix a regression from v0.13.0 where arc changes are not written back correctly, if a scene is assigned to the "subplot".

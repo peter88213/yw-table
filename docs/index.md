@@ -17,9 +17,9 @@
 
 ## Download and install
 
-[Download the latest release (version 0.13.1)](https://github.com/peter88213/yw-table/raw/main/dist/yw_table_v0.13.1.zip)
+[Download the latest release (version 0.14.0)](https://github.com/peter88213/yw-table/raw/main/dist/yw_table_v0.14.0.zip)
 
-- Unzip the downloaded zipfile "yw_table_v0.13.1.zip" into a new folder.
+- Unzip the downloaded zipfile "yw_table_v0.14.0.zip" into a new folder.
 - Move into this new folder and launch **setup.pyw**. This installs the program for the local user.
 - Open "README.md" for usage instructions.
 
