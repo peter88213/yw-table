@@ -15,11 +15,11 @@ from pywriter.config.configuration import Configuration
 from pywriter.ui.main_tk import MainTk
 from pywriter.ui.set_icon_tk import *
 from pywriter.converter.export_target_factory import ExportTargetFactory
-from ywtablelib.ywtable_globals import *
-from ywtablelib.relations_table import RelationsTable
-from ywtablelib.node import Node
-from ywtablelib.widgets.table_frame import TableFrame
-from ywtablelib.csv_table import CsvTable
+from nvmatrixlib.nvmatrix_globals import *
+from nvmatrixlib.relations_table import RelationsTable
+from nvmatrixlib.node import Node
+from nvmatrixlib.widgets.table_frame import TableFrame
+from nvtablelib.csv_table import CsvTable
 
 APPLICATION = 'Relationship Table'
 APPNAME = 'yw_table'

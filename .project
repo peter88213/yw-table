@@ -3,6 +3,7 @@
 	<name>yw-table</name>
 	<comment></comment>
 	<projects>
+		<project>novelyst_matrix</project>
 		<project>PyWriter</project>
 	</projects>
 	<buildSpec>

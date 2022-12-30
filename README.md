@@ -7,7 +7,7 @@ For more information, see the [project homepage](https://peter88213.github.io/yw
 
 ## Development
 
-*yw-table* depends on the [pywriter](https://github.com/peter88213/PyWriter) library which must be present in your file system. It is organized as an Eclipse PyDev project. The official release branch on GitHub is *main*.
+*yw-table* depends on the [pywriter](https://github.com/peter88213/PyWriter) and the [novelyst_matrix](https://github.com/peter88213/novelyst_matrix) libraries which must be present in your file system. It is organized as an Eclipse PyDev project. The official release branch on GitHub is *main*.
 
 ### Mandatory directory structure for building the application script
 
@@ -16,6 +16,9 @@ For more information, see the [project homepage](https://peter88213.github.io/yw
 ├── PyWriter/
 │   └── src/
 │       └── pywriter/
+├── novelyst_matrix/
+│   └── src/
+│       └── nvmatrixlib/
 └── yw-table/
     ├── src/
     ├── test/
@@ -30,7 +33,7 @@ For more information, see the [project homepage](https://peter88213.github.io/yw
 
 ### Development tools
 
-- [Python](https://python.org) version 3.9
+- [Python](https://python.org) version 3.11
 - [Eclipse IDE](https://eclipse.org) with [PyDev](https://pydev.org) and [EGit](https://www.eclipse.org/egit/)
 - [Apache Ant](https://ant.apache.org/) for building the application script
 
@@ -39,5 +42,3 @@ For more information, see the [project homepage](https://peter88213.github.io/yw
 This is Open Source software, and *yw-table* is licensed under GPLv3. See the
 [GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
 details, or consult the [LICENSE](https://github.com/peter88213/yw-table/blob/main/LICENSE) file.
-
-The modules in the *widgets* package are published under the [MIT License](http://www.opensource.org/licenses/mit-license.php). 

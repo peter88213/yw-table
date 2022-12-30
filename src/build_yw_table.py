@@ -18,7 +18,8 @@ TARGET_FILE = f'{BUILD}yw_table.py'
 
 
 def main():
-    inliner.run(SOURCE_FILE, TARGET_FILE, 'ywtablelib', '../src/', copyPyWriter=False)
+    inliner.run(SOURCE_FILE, TARGET_FILE, 'nvtablelib', '../src/', copyPyWriter=False)
+    inliner.run(TARGET_FILE, TARGET_FILE, 'nvmatrixlib', '../../novelyst_matrix/src/', copyPyWriter=False)
     inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../../PyWriter/src/', copyPyWriter=False)
     # inliner.run(SOURCE_FILE, TARGET_FILE, 'ywtablelib', '../src/')
     # inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../src/')
