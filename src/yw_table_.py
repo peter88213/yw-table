@@ -19,7 +19,7 @@ from nvmatrixlib.nvmatrix_globals import *
 from nvmatrixlib.relations_table import RelationsTable
 from nvmatrixlib.node import Node
 from nvmatrixlib.widgets.table_frame import TableFrame
-from nvtablelib.csv_table import CsvTable
+from nvretablexlib.csv_table import CsvTable
 
 APPLICATION = 'Relationship Table'
 APPNAME = 'yw_table'

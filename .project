@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>novelyst_matrix</project>
+		<project>novelyst_retablex</project>
 		<project>PyWriter</project>
 	</projects>
 	<buildSpec>
