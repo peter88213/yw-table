@@ -38,10 +38,18 @@ SETTINGS = dict(
     color_location_node='coral3',
     color_item_heading='aquamarine1',
     color_item_node='aquamarine3',
-    csv_true='1',
-    csv_false='0',
-)
-OPTIONS = {}
+    csv_arc_true='Ⓐ',
+    csv_arc_false='',
+    csv_chr_true='Ⓒ',
+    csv_chr_false='',
+    csv_loc_true='Ⓛ',
+    csv_loc_false='',
+    csv_itm_true='Ⓘ',
+    csv_itm_false='',
+    )
+OPTIONS = dict(
+    csv_row_numbers=True,
+    )
 
 
 class TableManager(MainTk):
@@ -52,8 +60,11 @@ class TableManager(MainTk):
         set_icon(self.root, icon='tLogo32')
 
         # Export
-        self.mainMenu.add_command(label=_('Export'), command=self._export_table)
-        self.mainMenu.entryconfig(_('Export'), state='disabled')
+        self.exportMenu = tk.Menu(self.mainMenu, tearoff=0)
+        self.mainMenu.add_cascade(label=_('Export'))
+        self.mainMenu.entryconfig(_('Export'), menu=self.exportMenu, state='disabled')
+        self.exportMenu.add_command(label='csv', command=lambda: self._export_table('excel', 'utf-8'))
+        self.exportMenu.add_command(label='csv (Excel)', command=lambda:self._export_table('excel-tab', 'utf-16'))
 
         # Help
         self.helpMenu = tk.Menu(self.mainMenu, tearoff=0)
@@ -104,11 +115,13 @@ class TableManager(MainTk):
                     self.set_info_how(f'!{str(ex)}')
             Node.isModified = False
 
-    def _export_table(self):
+    def _export_table(self, csvDialect, csvEncoding):
         """Export the table as a csv file."""
         exportTargetFactory = ExportTargetFactory([CsvTable])
         try:
             self.kwargs['suffix'] = CsvTable.SUFFIX
+            self.kwargs['csv_dialect'] = csvDialect
+            self.kwargs['csv_encoding'] = csvEncoding
             __, target = exportTargetFactory.make_file_objects(self.prjFile.filePath, **self.kwargs)
         except Exception as ex:
             self.set_info_how(f'!{str(ex)}')

@@ -5,6 +5,14 @@
 ## Changelog
 
 
+### v0.17.0 Beta release
+
+- Offer various csv export formats.
+- Optionally number csv rows.
+- Set csv node display for each element type.
+
+Based on PyWriter v9.0.5
+
 ### v0.16.0 Beta release
 
 - Add arcs to the csv export.
