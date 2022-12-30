@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.17.1 Beta release
+
+- Fix a bug where arc references are not shown if the scene is "subplot".
+
+Based on PyWriter v9.0.5 and novelyst_retablex v0.2.1
+
 ### v0.17.0 Beta release
 
 - Offer various csv export formats.
