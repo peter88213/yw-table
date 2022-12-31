@@ -15,7 +15,7 @@ from pywriter.config.configuration import Configuration
 from pywriter.ui.main_tk import MainTk
 from pywriter.ui.set_icon_tk import *
 from pywriter.converter.export_target_factory import ExportTargetFactory
-from nvmatrixlib.nvmatrix_globals import *
+from pywriter.pywriter_globals import *
 from nvmatrixlib.relations_table import RelationsTable
 from nvmatrixlib.node import Node
 from nvmatrixlib.widgets.table_frame import TableFrame
