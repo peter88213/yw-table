@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v0.17.2 Beta release
+
+- Make it run on old Windows versions.
+
+Baased on PyWriter v10.0.1, novelyst_matrix v0.14.1, and novelyst_retablex v0.2.2
+
 ### v0.17.1 Beta release
 
 - Fix a bug where arc references for "subplot" scenes are missing in the csv export.
