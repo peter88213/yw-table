@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v1.0.0
+
+- Reduce the memory use by discarding the docstrings on building.
+
+Based on PyWriter v12.1.2
+
 ### v0.17.2 Beta release
 
 - Make it run on old Windows versions.
