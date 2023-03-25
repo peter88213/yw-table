@@ -35,6 +35,10 @@ Please make sure that your Python3 installation has the *tkinter* module. On Ubu
 
 See the [instructions for use](usage)
 
+## Credits
+
+- The icons are made using the free *Pusab* font by Ryoichi Tsunekawa, [Flat-it](http://flat-it.com/).
+
 ## License
 
 This is Open Source software, and *yw-table* is licensed under GPLv3. See the
