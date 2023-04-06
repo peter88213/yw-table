@@ -18,10 +18,9 @@ TARGET_FILE = f'{BUILD}yw_table.py'
 
 
 def main():
-    inliner.run(SOURCE_FILE, TARGET_FILE, 'nvtablelib', '../src/', copyPyWriter=False)
-    inliner.run(TARGET_FILE, TARGET_FILE, 'nvretablexlib', '../../novelyst_retablex/src/', copyPyWriter=False)
-    inliner.run(TARGET_FILE, TARGET_FILE, 'nvmatrixlib', '../../novelyst_matrix/src/', copyPyWriter=False)
-    inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../../PyWriter/src/', copyPyWriter=False)
+    inliner.run(SOURCE_FILE, TARGET_FILE, 'nvretablexlib', '../src/', copyPyWriter=False)
+    inliner.run(TARGET_FILE, TARGET_FILE, 'nvmatrixlib', '../src/', copyPyWriter=False)
+    inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../src/', copyPyWriter=False)
     print('Done.')
 
 
