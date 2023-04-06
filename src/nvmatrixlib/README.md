@@ -1,4 +1,4 @@
-# This directory contains a subset of the nvmatrixlib library
+# This directory contains the proper version of the nvmatrixlib library
 
 Version v1.0.3
 

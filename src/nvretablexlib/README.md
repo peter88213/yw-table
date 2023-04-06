@@ -1,4 +1,4 @@
-# This directory contains a subset of the nvretablexlib library
+# This directory contains the proper version of the nvretablexlib library
 
 Version v0.4.0 (commit bf3feeded2d7e5c98f51861400364f76a958c43f)
 

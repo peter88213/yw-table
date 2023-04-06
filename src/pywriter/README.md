@@ -1,4 +1,4 @@
-# This directory contains a subset of the PyWriter library
+# This directory contains the proper version of the PyWriter library
 
 Version v12.3.0
 
