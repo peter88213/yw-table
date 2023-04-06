@@ -9,6 +9,7 @@
 
 - Display scene relationships to characters, locations, items, and arcs with a table.
 - Add/Remove relationships by klicking on the cells.
+- Export the table as csv.
 
 ## Requirements
 
