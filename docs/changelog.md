@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v1.0.1
+
+- Make sure the scene title column's minimum width fits the column header.
+
+Based on Pywriter v12.3.0 and novelyst_matrix v1.0.3
+
 ### v1.0.0
 
 - Reduce the memory use by discarding the docstrings on building.
@@ -15,7 +21,7 @@ Based on PyWriter v12.1.2
 
 - Make it run on old Windows versions.
 
-Baased on PyWriter v10.0.1, novelyst_matrix v0.14.1, and novelyst_retablex v0.2.2
+Based on PyWriter v10.0.1, novelyst_matrix v0.14.1, and novelyst_retablex v0.2.2
 
 ### v0.17.1 Beta release
 
