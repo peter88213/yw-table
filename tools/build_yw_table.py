@@ -9,7 +9,7 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
 import sys
-sys.path.insert(0, f'{os.getcwd()}/../../PyWriter/src')
+# sys.path.insert(0, f'{os.getcwd()}/../../PyWriter/src')
 import inliner
 
 SRC = '../src/'
@@ -22,6 +22,7 @@ def main():
     inliner.run(SOURCE_FILE, TARGET_FILE, 'nvretablexlib', '../src/', copyPyWriter=False)
     inliner.run(TARGET_FILE, TARGET_FILE, 'nvmatrixlib', '../src/', copyPyWriter=False)
     inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../src/', copyPyWriter=False)
+    # inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../../PyWriter/src/', copyPyWriter=True)
     print('Done.')
 
 

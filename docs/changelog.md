@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### v1.0.2
+
+- Reading .yw7 files created with the iOS yWriter version.
+
+Based on PyWriter v12.19.0
+
 ### v1.0.1
 
 - Make sure the scene title column's minimum width fits the column header.

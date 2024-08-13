@@ -44,14 +44,14 @@ import msgfmt
 APP_NAME = 'yw-table'
 PO_PATH = '../i18n/de.po'
 MO_PATH = f'../i18n/locale/de/LC_MESSAGES/{APP_NAME}.mo'
-MO_COPY = f'../../novelyst/src/locale/de/LC_MESSAGES/{APP_NAME}.mo'
+# MO_COPY = f'../../novelyst/src/locale/de/LC_MESSAGES/{APP_NAME}.mo'
 
 
 def main(version='unknown'):
     if translations.main('de', app=APP_NAME, appVersion=version):
         print(f'Writing "{MO_PATH}" ...')
         msgfmt.make(PO_PATH, MO_PATH)
-        copyfile(MO_PATH, MO_COPY)
+        # copyfile(MO_PATH, MO_COPY)
     else:
         sys.exit(1)
 
