@@ -5,6 +5,12 @@
 ## Changelog
 
 
+### Version 1.0.3
+
+- Refactor for future Python versions.
+
+Based on PyWriter version 12.19.4
+
 ### Version 1.0.2
 
 - Reading .yw7 files created with the iOS yWriter version.
