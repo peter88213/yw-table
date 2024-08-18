@@ -19,9 +19,12 @@ TARGET_FILE = f'{BUILD}yw_table.py'
 
 
 def main():
-    inliner.run(SOURCE_FILE, TARGET_FILE, 'nvretablexlib', '../src/', copyPyWriter=False)
-    inliner.run(TARGET_FILE, TARGET_FILE, 'nvmatrixlib', '../src/', copyPyWriter=False)
-    inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../src/', copyPyWriter=False)
+    os.makedirs(BUILD, exist_ok=True)
+    inliner.run(SOURCE_FILE, TARGET_FILE, 'nvretablexlib', '../src/')
+    inliner.run(TARGET_FILE, TARGET_FILE, 'nvmatrixlib', '../src/')
+    inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../src/')
+    # inliner.run(SOURCE_FILE, TARGET_FILE, 'nvretablexlib', '../src/', copyPyWriter=True)
+    # inliner.run(TARGET_FILE, TARGET_FILE, 'nvmatrixlib', '../src/', copyPyWriter=True)
     # inliner.run(TARGET_FILE, TARGET_FILE, 'pywriter', '../../PyWriter/src/', copyPyWriter=True)
     print('Done.')
 
